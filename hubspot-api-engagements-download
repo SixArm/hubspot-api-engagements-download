@@ -15,9 +15,9 @@
 #
 # Example output file names:
 #
-#     engagements-offset-0-limit-300.json
-#     engagements-offset-300-limit-300.json
-#     engagements-offset-600-limit-300.json
+#     engagements-offset-0-limit-250.json
+#     engagements-offset-250-limit-250.json
+#     engagements-offset-500-limit-250.json
 #
 # This tool also combines the files' engagements into one file name:
 #
