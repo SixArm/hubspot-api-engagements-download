@@ -26,23 +26,10 @@
 # Author: joel@joelparkerhenderson.com
 ##
 
-##
-#
-# sixarm-unix-shell-functions library
-#
-##
+set -euf
 
-# out: print output message to stdout
-out() { printf %s\\n "$*" ; }
-
-# err: print error message to stderr
-err() { >&2 printf %s\\n "$*" ; }
-
-# die: print error message to stderr, then exit with error code 1
-die() { >&2 printf %s\\n "$*" ; exit 1 ; }
-
-# cmd: return true iff a command exists
-cmd() { command -v "$1" >/dev/null 2>&1 ; }
+# Include https://github.com/SixArm/posix-shell-script-kit
+. "$(dirname "$(readlink -f "$0")")/posix-shell-script-kit"
 
 ##
 #
@@ -90,8 +77,8 @@ file_join() {
 # Syntax: preflight
 preflight() {
     [ -z ${HUBSPOT_API_KEY+x} ] && die "Environment needed: HUBSPOT_API_KEY"
-    cmd curl || die "Command needed: curl (HTTP downloader)"
-    cmd jq || die "Command needed: jq (JSON processor)"
+    command_exists_or_die curl
+    command_exists_or_die jq
 }
 
 # Main function
